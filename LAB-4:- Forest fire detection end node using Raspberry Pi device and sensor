@@ -1,0 +1,24 @@
+FILE NAME:- flame_sensor_alert.ino
+
+void setup() {
+  pinMode(2, INPUT); // Initialize Flame sensor output pin (pin 2) as input
+  pinMode(LED_BUILTIN, OUTPUT); // Initialize built-in LED pin as output
+  Serial.begin(9600); // Initialize serial communication at 9600 baud
+}
+
+void loop() {
+  // Read the state of the flame sensor
+  int sensorState = digitalRead(2);
+
+  if (sensorState == HIGH) {
+    // If no fire detected (assuming HIGH means no fire)
+    digitalWrite(LED_BUILTIN, HIGH); // Turn the LED on
+    Serial.println("No Fire detected!!! **");
+  } else {
+    // If fire detected (assuming LOW means fire detected)
+    digitalWrite(LED_BUILTIN, LOW); // Turn the LED off
+    Serial.println("** Warning!!!! Fire detected!!! **");
+  }
+
+  delay(100); // Short delay to reduce serial output frequency
+}
