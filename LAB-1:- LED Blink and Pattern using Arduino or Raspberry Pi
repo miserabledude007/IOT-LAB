@@ -1,0 +1,20 @@
+FILE NAME:- Blink.ino
+
+// Define the pin number for the LED
+const int LED = 13;
+
+void setup() {
+  // Set the LED pin as an OUTPUT
+  pinMode(LED, OUTPUT);
+}
+
+void loop() {
+  // Turn the LED on (HIGH voltage level)
+  digitalWrite(LED, HIGH);
+  // Wait for 1000 milliseconds (1 second)
+  delay(1000);
+  // Turn the LED off (LOW voltage level)
+  digitalWrite(LED, LOW);
+  // Wait for 1000 milliseconds (1 second)
+  delay(1000);
+}
