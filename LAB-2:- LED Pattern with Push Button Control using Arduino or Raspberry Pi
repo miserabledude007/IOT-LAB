@@ -1,0 +1,229 @@
+FILE NAME:- led_patterns_control.ino
+
+// Define pin numbers for LEDs and button
+int L1 = 13;
+int L2 = 12;
+int L3 = 11;
+int L4 = 10;
+int L5 = 9;
+int L6 = 8;
+int L7 = 7;
+int buttonPin = 6;
+
+// Define delay time and pattern variables
+int de = 50; // delay time
+int p = 0; // pattern variable
+int buttonState = 0; // variable for reading the button status
+int lastButtonState = 0; // variable to store the last button state
+
+void setup() {
+  // Set LED pins and button pin as INPUT/OUTPUT
+  pinMode(L1, OUTPUT);
+  pinMode(L2, OUTPUT);
+  pinMode(L3, OUTPUT);
+  pinMode(L4, OUTPUT);
+  pinMode(L5, OUTPUT);
+  pinMode(L6, OUTPUT);
+  pinMode(L7, OUTPUT);
+  pinMode(buttonPin, INPUT);
+}
+
+void loop() {
+  // Read the state of the button
+  buttonState = digitalRead(buttonPin);
+
+  // Check if button state has changed from LOW to HIGH
+  if (buttonState == HIGH && lastButtonState == LOW) {
+    p++;
+    delay(200); // Debounce delay
+  }
+
+  // Reset pattern counter after 7
+  if (p > 7) {
+    p = 0;
+  }
+
+  // Update LEDs based on the pattern value
+  switch (p) {
+    case 1:
+      pattern1();
+      break;
+    case 2:
+      pattern2();
+      break;
+    case 3:
+      pattern3();
+      break;
+    case 4:
+      pattern4();
+      break;
+    case 5:
+      pattern5();
+      break;
+    case 6:
+      pattern6();
+      break;
+    case 7:
+      pattern7();
+      break;
+  }
+
+  // Save the button state for the next loop iteration
+  lastButtonState = buttonState;
+}
+
+void pattern1() {
+  digitalWrite(L1, HIGH);
+  digitalWrite(L2, LOW);
+  digitalWrite(L3, LOW);
+  digitalWrite(L4, LOW);
+  digitalWrite(L5, LOW);
+  digitalWrite(L6, LOW);
+  digitalWrite(L7, LOW);
+  delay(de);
+  digitalWrite(L1, LOW);
+  digitalWrite(L2, HIGH);
+  delay(de);
+  digitalWrite(L2, LOW);
+  digitalWrite(L3, HIGH);
+  delay(de);
+  digitalWrite(L3, LOW);
+  digitalWrite(L4, HIGH);
+  delay(de);
+  digitalWrite(L4, LOW);
+  digitalWrite(L5, HIGH);
+  delay(de);
+  digitalWrite(L5, LOW);
+  digitalWrite(L6, HIGH);
+  delay(de);
+  digitalWrite(L6, LOW);
+  digitalWrite(L7, HIGH);
+  delay(de);
+}
+
+void pattern2() {
+  digitalWrite(L7, HIGH);
+  delay(de);
+  digitalWrite(L7, LOW);
+  digitalWrite(L6, HIGH);
+  delay(de);
+  digitalWrite(L6, LOW);
+  digitalWrite(L5, HIGH);
+  delay(de);
+  digitalWrite(L5, LOW);
+  digitalWrite(L4, HIGH);
+  delay(de);
+  digitalWrite(L4, LOW);
+  digitalWrite(L3, HIGH);
+  delay(de);
+  digitalWrite(L3, LOW);
+  digitalWrite(L2, HIGH);
+  delay(de);
+  digitalWrite(L2, LOW);
+  digitalWrite(L1, HIGH);
+  delay(de);
+}
+
+void pattern3() {
+  digitalWrite(L1, HIGH);
+  delay(de);
+  digitalWrite(L1, LOW);
+  digitalWrite(L2, HIGH);
+  delay(de);
+  digitalWrite(L2, LOW);
+  digitalWrite(L3, HIGH);
+  delay(de);
+  digitalWrite(L3, LOW);
+  digitalWrite(L4, HIGH);
+  delay(de);
+  digitalWrite(L4, LOW);
+  digitalWrite(L5, HIGH);
+  delay(de);
+  digitalWrite(L5, LOW);
+  digitalWrite(L6, HIGH);
+  delay(de);
+  digitalWrite(L6, LOW);
+  digitalWrite(L7, HIGH);
+  delay(de);
+  digitalWrite(L7, LOW);
+}
+
+void pattern4() {
+  digitalWrite(L1, HIGH);
+  digitalWrite(L7, HIGH);
+  delay(de);
+  digitalWrite(L1, LOW);
+  digitalWrite(L7, LOW);
+  digitalWrite(L2, HIGH);
+  digitalWrite(L6, HIGH);
+  delay(de);
+  digitalWrite(L2, LOW);
+  digitalWrite(L6, LOW);
+  digitalWrite(L3, HIGH);
+  digitalWrite(L5, HIGH);
+  delay(de);
+  digitalWrite(L3, LOW);
+  digitalWrite(L5, LOW);
+  digitalWrite(L4, HIGH);
+  delay(de);
+}
+
+void pattern5() {
+  digitalWrite(L4, HIGH);
+  delay(de);
+  digitalWrite(L4, LOW);
+  digitalWrite(L3, HIGH);
+  digitalWrite(L5, HIGH);
+  delay(de);
+  digitalWrite(L3, LOW);
+  digitalWrite(L5, LOW);
+  digitalWrite(L2, HIGH);
+  digitalWrite(L6, HIGH);
+  delay(de);
+  digitalWrite(L2, LOW);
+  digitalWrite(L6, LOW);
+  digitalWrite(L1, HIGH);
+  digitalWrite(L7, HIGH);
+  delay(de);
+}
+
+void pattern6() {
+  digitalWrite(L1, HIGH);
+  delay(de);
+  digitalWrite(L2, HIGH);
+  delay(de);
+  digitalWrite(L3, HIGH);
+  delay(de);
+  digitalWrite(L4, HIGH);
+  delay(de);
+  digitalWrite(L5, HIGH);
+  delay(de);
+  digitalWrite(L6, HIGH);
+  delay(de);
+  digitalWrite(L7, HIGH);
+  delay(de);
+  digitalWrite(L7, LOW);
+  delay(de);
+  digitalWrite(L6, LOW);
+  delay(de);
+  digitalWrite(L5, LOW);
+  delay(de);
+  digitalWrite(L4, LOW);
+  delay(de);
+  digitalWrite(L3, LOW);
+  delay(de);
+  digitalWrite(L2, LOW);
+  delay(de);
+  digitalWrite(L1, LOW);
+  delay(de);
+}
+
+void pattern7() {
+  digitalWrite(L1, LOW);
+  digitalWrite(L2, LOW);
+  digitalWrite(L3, LOW);
+  digitalWrite(L4, LOW);
+  digitalWrite(L5, LOW);
+  digitalWrite(L6, LOW);
+  digitalWrite(L7, LOW);
+}
