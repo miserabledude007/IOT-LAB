@@ -11,10 +11,10 @@ int L7 = 7;
 int buttonPin = 6;
 
 // Define delay time and pattern variables
-int de = 50; // delay time
-int p = 0; // pattern variable
-int buttonState = 0; // variable for reading the button status
-int lastButtonState = 0; // variable to store the last button state
+int de = 50;	// delay time
+int p = 0;		// pattern variable
+int buttonState = 0; 	// variable for reading the button status
+int lastButtonState = 0; 	// variable to store the last button state
 
 void setup() {
   // Set LED pins and button pin as INPUT/OUTPUT
@@ -35,7 +35,7 @@ void loop() {
   // Check if button state has changed from LOW to HIGH
   if (buttonState == HIGH && lastButtonState == LOW) {
     p++;
-    delay(200); // Debounce delay
+    delay(2000); // Debounce delay
   }
 
   // Reset pattern counter after 7
@@ -74,12 +74,6 @@ void loop() {
 
 void pattern1() {
   digitalWrite(L1, HIGH);
-  digitalWrite(L2, LOW);
-  digitalWrite(L3, LOW);
-  digitalWrite(L4, LOW);
-  digitalWrite(L5, LOW);
-  digitalWrite(L6, LOW);
-  digitalWrite(L7, LOW);
   delay(de);
   digitalWrite(L1, LOW);
   digitalWrite(L2, HIGH);
